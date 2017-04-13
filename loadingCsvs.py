@@ -8,7 +8,7 @@ from sklearn import linear_model
 features = np.genfromtxt ('features.csv', delimiter=',')
 #headers = np.genfromtxt('headers.csv',delimiter=',')
 headers = pd.read_csv('headers.csv')
-targets = np.genfromtxt('targets.csv',delimiter=',');
+targets = np.genfromtxt('targets.csv',delimiter=',')
 myDataset = (features,targets)
 myDict = {'data':features,'targets':targets}
 
