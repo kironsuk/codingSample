@@ -6,6 +6,7 @@ from sklearn import linear_model
 
 loadingObj = myloader()
 loadingObj.imputeData('mean')
+loadingObj.transformToPCA()
 
 dataDictionary=loadingObj.getData()
 features = dataDictionary['data']
@@ -17,8 +18,7 @@ X_train, X_test, y_train, y_test = train_test_split(features, targets, test_size
 #Preform RIdge Regression
 regr = linear_model.Ridge (alpha = .5)
 regr.fit(X_train, y_train)
-# The coefficients
-print('Coefficients: \n', regr.coef_)
+
 # The mean squared error
 print("Mean squared error: %.2f"
       % np.mean((regr.predict(X_test) - y_test) ** 2))

@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import Imputer
 from sklearn.decomposition import PCA
+from sklearn import cluster
 
 
 class myloader:
@@ -22,3 +23,7 @@ class myloader:
         pca = PCA(n_components=50, svd_solver='randomized',
                   whiten=True).fit(self.features)
         self.features = pca.transform(self.features)
+    def reduceDimByAgglo(self):
+        agglo = cluster.FeatureAgglomeration(n_clusters=32)
+        agglo.fit(self.features)
+        self.features = agglo.transform(self.features)
