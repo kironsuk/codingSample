@@ -20,8 +20,9 @@ class myloader:
         imp.fit(self.features)
 
     def transformToPCA(self):
-        pca = PCA(n_components=50, svd_solver='randomized',
+        pca = PCA(n_components=10, svd_solver='randomized',
                   whiten=True).fit(self.features)
+        #print 'Explained Variance', pca.explained_variance_ratio_
         self.features = pca.transform(self.features)
     def reduceDimByAgglo(self):
         agglo = cluster.FeatureAgglomeration(n_clusters=32)
